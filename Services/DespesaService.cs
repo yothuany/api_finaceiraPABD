@@ -88,7 +88,7 @@ namespace ApiFinanceiro.Services
                 //        c => c.Conflict(new { message = "Somente é possível realizar o pagamento no dia de vencimento" }));
                 //}
 
-               _mapper.Map<DespesaUpdateDto, Despesa>(despesaDto, despesa);
+               _mapper.Map(despesaDto, despesa);
 
 
                 _context.Despesas.Update(despesa);

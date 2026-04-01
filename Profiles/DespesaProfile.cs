@@ -19,6 +19,7 @@ namespace ApiFinanceiro.Profiles
                 )
                 );
 
+
         }
     }
 }
