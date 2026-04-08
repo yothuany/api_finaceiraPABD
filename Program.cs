@@ -2,6 +2,7 @@ using ApiFinanceiro.DataContexts;
 using ApiFinanceiro.Profiles;
 using ApiFinanceiro.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,14 @@ var connectionString = builder.Configuration.GetConnectionString("mysql");
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 32)))
  );
+
+builder.Services.AddControllers().AddJsonOptions(
+    options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true; 
+    }
+    );
 
 
 builder.Services.AddControllers();
